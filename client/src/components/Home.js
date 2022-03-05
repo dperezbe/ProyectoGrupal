@@ -1,8 +1,7 @@
 import { Container, Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import "../css/estiloIndex.css"
 
 
-const Index = (props) => {
+const Home = (props) => {
     return (
         //<></>
         <Container>
@@ -79,4 +78,4 @@ const Index = (props) => {
     )
 }
 
-export default Index;
+export default Home;

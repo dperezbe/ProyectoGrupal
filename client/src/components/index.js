@@ -1,7 +1,6 @@
 import { Container, Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import "../css/estiloIndex.css"
-//import Button from '@mui/material/Button';
-import { TextField } from "@mui/material";
+
 
 const Index = (props) => {
     return (

@@ -16,6 +16,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 require('./routes/routes.user')(app);
+require('./routes/routes.isport')(app);
 
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))

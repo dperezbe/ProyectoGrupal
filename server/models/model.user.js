@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     },
     birthdate: {
       type: Date,
-      required: [true, "Fecha de nacimiento es requerido"],
+      required: [true, "birthdate required"],
     },
   }, {timestamps: true});
 
@@ -42,6 +42,5 @@ UserSchema.pre('save', function(next) {
     });
 });
 
-const User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+module.exports = mongoose.model("User", UserSchema);

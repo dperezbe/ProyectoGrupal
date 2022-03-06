@@ -37,6 +37,15 @@ module.exports.getMembers = (req,res) => {
     .catch((err) => res.status(400).json(err));
 }
 
+module.exports.getMembers = (req,res) => {
+    member
+    .findById(req.params.id)
+    .populate('Members','-password -createdAt -updatedAt -__v ')
+    .then((app) => res.json(app))
+    .catch((err) => res.status(400).json(err));
+}
+
+
 module.exports.addMember = (request, response) => {
     member
       .findOneAndUpdate(
@@ -47,3 +56,23 @@ module.exports.addMember = (request, response) => {
       .then((data) => response.json(data))
       .catch((err) => response.json(err));
   };
+
+module.exports.pullMember = (request, response) => {
+    member
+      .updateOne(
+        { _id: request.params.id },
+        { $pull: { Members: request.params.user } },
+        { new: true }
+      )
+      .then((data) => response.json(data))
+      .catch((err) => response.json(err));
+  };
+
+
+
+
+
+
+
+
+

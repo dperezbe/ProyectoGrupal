@@ -9,5 +9,6 @@ module.exports = (app) => {
 
     app.get('/api/members/event/:id', authenticate,isport.getMembers);
     app.put('/api/members/event/:id', authenticate,isport.addMember);
+    app.delete('/api/members/:user/event/:id', authenticate,isport.pullMember);
 
 }

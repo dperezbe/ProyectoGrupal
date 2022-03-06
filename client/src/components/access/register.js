@@ -20,7 +20,7 @@ const Register = props => {
         errConfirmPassword:"",
     }  
 
-    const[inputs, setInputs]= useState(initialValues);
+    const[inputs, setInputs]= useState();
     const [errors, setErrors] = useState(erroresIniciales);
     const {onSubmitProp} = props;
 
@@ -31,27 +31,27 @@ const Register = props => {
     }
 
     const handleChange = (e) => {
-        // const {name, value} = e.target
-        // if (name === 'confirmPassword') {
-        //     if (inputs.password !== value) {
-        //         setErrors({
-        //             ...errors,
-        //             errConfirmPassword: "*Passwords must match"
-        //         });
-        //     } else {
-        //         setErrors({
-        //             ...errors,
-        //             errConfirmPassword: ''
-        //         });
-        //     }
-        // }
+        const {name, value} = e.target
+        if (name === 'confirmPassword') {
+            if (inputs.password !== value) {
+                setErrors({
+                    ...errors,
+                    errConfirmPassword: "*Passwords must match"
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    errConfirmPassword: ''
+                });
+            }
+        }
         setInputs({...inputs, [e.target.name]:e.target.value})
 
     }
 
     const enviarRegistro = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/user',inputs)
+        axios.post('/api/user',inputs)
         .then(res=>{
             setInputs(initialValues)})
         .catch(err=>console.log(err))
@@ -77,12 +77,21 @@ const Register = props => {
                     <Label>Birthdate:</Label>
                     <Input  type="date" name='birthdate' onChange={handleChange}></Input>
                 </FormGroup>
+                <FormGroup>
+                    <Label>Password:</Label>
+                    <Input  name='password' type='password' onChange={handleChange}></Input>
+                    {errors['password'] ? <p className="errors_reg_log">{errors['password'].message}</p>: ''}
+                    {
+                    errors &&
+                    <p className="errors_reg_log">{errors.errConfirmPassword}</p>
+                    }
+                </FormGroup>
+                <FormGroup>
+                    <Label>Confirm:</Label>                    
+                    <Input type='password'  name='confirmPassword'  onChange={handleChange} />
+                </FormGroup> 
                 <Button type="submit" onClick={enviarRegistro}>Register</Button>
             </Form>
-
-
-           
-
         </div>
     );
 };

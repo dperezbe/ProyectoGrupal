@@ -2,6 +2,14 @@ const sport = require('../models/model.isport');
 const member = require('../models/model.isport_member');
 const mongoose = require('mongoose');
 
+
+module.exports.geteventAll = (request, response) => {
+  sport
+    .find({}).sort({createdAt: "descending"})
+    .then((apps) => response.json(apps))
+    .catch((err) => response.status(400).json(err));
+};
+
 module.exports.createevent = (req,res) => {
 
     req.body._id = new mongoose.Types.ObjectId();
@@ -18,7 +26,7 @@ module.exports.createevent = (req,res) => {
     .catch((err) => res.status(400).json(err));
 
      return res.json(true);
-}
+};
 
 module.exports.getevent = (req,res) => {
     sport

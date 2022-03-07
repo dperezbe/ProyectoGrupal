@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, FormGroup , Label, Input, Button} from "reactstrap"
+import swal from "sweetalert2";
 
 
 const Register = ({setOption}) => {
@@ -34,7 +35,8 @@ const Register = ({setOption}) => {
             if (inputs.password !== value) {
                 setErrors({
                     ...errors,
-                    errConfirmPassword: "*Passwords must match"
+                    errConfirmPassword: swal.fire("*Passwords must match"),
+                    //("*Passwords must match")                    
                 });
             } else {
                 setErrors({

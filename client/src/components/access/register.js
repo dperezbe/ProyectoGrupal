@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, FormGroup , Label, Input, Button} from "reactstrap"
 
 
-const Register = props => {
+const Register = ({setOption}) => {
 
     const initialValues = {
         userName: "",
@@ -22,11 +22,9 @@ const Register = props => {
 
     const[inputs, setInputs]= useState();
     const [errors, setErrors] = useState(erroresIniciales);
-    const {onSubmitProp} = props;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmitProp(inputs);
         setInputs(initialValues);
     }
 
@@ -56,11 +54,13 @@ const Register = props => {
             setInputs(initialValues)})
         .catch(err=>console.log(err))
     }
+    const changeOption = () =>{
+        setOption(true);
+      }
 
     return (
-        <div >
-            <h1>iSport</h1>
-            <p> Free Pickup Game Finder and Organizer</p>
+        <div className='registerform'>
+           <h2>Registro</h2>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label>UserName:</Label>
@@ -90,7 +90,8 @@ const Register = props => {
                     <Label>Confirm:</Label>                    
                     <Input type='password'  name='confirmPassword'  onChange={handleChange} />
                 </FormGroup> 
-                <Button type="submit" onClick={enviarRegistro}>Register</Button>
+                <Button type="submit" className="btn-register" onClick={enviarRegistro}>Register</Button>
+                <div className="option" onClick={() => changeOption()}>Inicio de sesion</div>
             </Form>
         </div>
     );

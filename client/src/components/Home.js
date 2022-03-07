@@ -1,37 +1,29 @@
-import { Container } from "reactstrap";
-
+import React from "react";
+import Navegation from "./Navegation";
+import SliderClasification from "./SliderClasification";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./dashboard/Dashboard";
+import CreateEvent from "./events/CreateEvent";
+import Mainuser from "./user/Mainuser";
 
 const Home = (props) => {
-    return (
-        //<></>
-        <Container>
-            <div id="header" align="center">
-                <p id="items">Home</p>
-                <p id="items">New</p>
-                <p id="items">Search</p>
-                <p id="items">Account</p>
-            </div>
-
-            <div id="centro">
-                <h1 id="titulo">Welcome Minh!</h1>
-                <p id="tituloDiaActual">Listado Actual</p>
-
-                <table id="tabla">
-                    <tr>
-                        <td>Campo 1</td>
-                        <td>Campo 2</td>
-                        <td>Campo 3</td>
-                    </tr>
-
-                    <tr>
-                        <td>Celda 4</td>
-                        <td>Celda 5</td>
-                        <td>Celda 6</td>
-                    </tr>                    
-                </table>
-            </div>            
-        </Container>       
-    );
-}
+  return (
+    <div className="container-fluid g-0">
+      <div className="row g-0">
+        <div className="col-sm-2 menu-clasificacion">
+          <SliderClasification />
+        </div>
+        <div className="col-sm-10 main">
+          <Navegation />
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/event" element={<CreateEvent />} />
+            <Route path="/user/:id" element={<Mainuser />} />
+          </Routes>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Home;

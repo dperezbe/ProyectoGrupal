@@ -1,19 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import Register from './components/access/register';
-import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Login from './components/access/Login';
-
+import { useState } from 'react';
+import MainAccess from './components/access/MainAccess';
 
 function App() {
+  const [logged, Setlogged] = useState(true);
+
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      {logged ? <Home />: <MainAccess />}
     </div>
 
   );

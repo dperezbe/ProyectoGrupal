@@ -122,6 +122,15 @@ body, html {
   transform: scale(1.2); 
 }
 
+
+#baseball-img:hover {
+  transform: scale(1.2); 
+}
+
+#running-img:hover {
+  transform: scale(1.2); 
+}
+
 .menu-clasificacion {
   min-height: 100vh;
 }

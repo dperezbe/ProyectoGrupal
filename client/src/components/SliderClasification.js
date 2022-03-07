@@ -1,9 +1,11 @@
 import React from "react";
-import { UncontrolledCarousel } from "reactstrap";
 
 import Futbol from "../images/futbol.jpg";
 import Tenis from "../images/tenis.jpg";
 import Basquetbol from "../images/basquetbol.jpg";
+import BaseBall from "../images/baseball.jpg";
+import Running from "../images/running.jpg";
+
 
 const SliderClasification = () => {
   return (
@@ -17,6 +19,12 @@ const SliderClasification = () => {
         </li>
         <li>
           <img id="basquetbol-img" src={Basquetbol}/>
+        </li>
+        <li>
+          <img id="baseball-img" src={BaseBall}/>
+        </li>
+        <li>
+          <img id="running-img" src={Running}/>
         </li>
       </ul>
     </div>

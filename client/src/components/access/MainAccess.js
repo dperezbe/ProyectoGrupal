@@ -4,7 +4,7 @@ import Register from "./register";
 
 const MainAccess = () => {
   const [option, setOption] = useState(true);
-
+  
   return (
     <div className="main-access">
       <div className="container">

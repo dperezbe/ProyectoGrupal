@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { authContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Login = ({ setOption }) => {
 
@@ -26,7 +27,8 @@ const Login = ({ setOption }) => {
       if (value.length < 6) {
         setErrors({
           ...errors,
-          errPassword: "*Password must be at least 6 characters",
+          errPassword: swal.fire("*Password must be at least 6 characters.")
+          //"*Password must be at least 6 characters",
         });
       } else {
         setErrors({

@@ -16,6 +16,7 @@ const Home = (props) => {
         <div className="col-sm-10 main">
           <Navegation />
           <Routes>
+            <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/event" element={<CreateEvent />} />
             <Route path="/user/:id" element={<Mainuser />} />

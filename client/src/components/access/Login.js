@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "axios";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import Register from "./register";
+import { authContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setOption }) => {
+
+  const { Setlogged } = useContext(authContext);
+
+  let navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -34,7 +40,12 @@ const Login = ({ setOption }) => {
     e.preventDefault();
     axios
       .post("/api/login", inputs)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if(!res.data.error){
+        Setlogged(res.data);
+        navigate(`/dashboard`);
+        }
+      })
       .catch((res) => console.log(res));
   };
 

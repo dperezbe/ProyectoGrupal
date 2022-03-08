@@ -35,8 +35,7 @@ const Register = ({setOption}) => {
             if (inputs.password !== value) {
                 setErrors({
                     ...errors,
-                    errConfirmPassword: swal.fire("*Passwords must match"),
-                    //("*Passwords must match")                    
+                    errConfirmPassword: "*Passwords must match"                 
                 });
             } else {
                 setErrors({

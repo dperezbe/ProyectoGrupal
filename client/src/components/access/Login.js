@@ -27,8 +27,7 @@ const Login = ({ setOption }) => {
       if (value.length < 6) {
         setErrors({
           ...errors,
-          errPassword: swal.fire("*Password must be at least 6 characters.")
-          //"*Password must be at least 6 characters",
+          errPassword: "*Password must be at least 6 characters",
         });
       } else {
         setErrors({

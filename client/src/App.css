@@ -154,3 +154,7 @@ body, html {
   margin-top: 10px;
   margin-left: 40px;
 }
+
+#tituloDashboard{
+  text-align: center;
+}

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { authContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 const Login = ({ setOption }) => {
 
@@ -44,7 +44,22 @@ const Login = ({ setOption }) => {
       .then((res) => {
         if(!res.data.error){
         Setlogged(res.data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         navigate(`/dashboard`);
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          })
         }
       })
       .catch((res) => console.log(res));

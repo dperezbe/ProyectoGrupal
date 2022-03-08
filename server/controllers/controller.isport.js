@@ -88,5 +88,5 @@ module.exports.historyeventOwner = (request,response) =>{
   sport
   .find({eventOwner: request.params.id})
   .then((event) => response.json(event) )
-  .catch((error) => response.status(400).json(err));
+  .catch((err) => response.status(400).json(err));
 }

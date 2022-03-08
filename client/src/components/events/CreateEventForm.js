@@ -14,6 +14,9 @@ const CreateEventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(newevent.eventName === ''){
+        return;
+    }
     axios
       .post("/api/event/create", newevent)
       .then((res) => console.log(res))

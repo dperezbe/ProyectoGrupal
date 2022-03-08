@@ -1,10 +1,22 @@
-import React, {useContext}from 'react';
+import axios from 'axios';
+import React, {useContext, useEffect, useState}from 'react';
 import { useParams } from "react-router-dom";
 import { authContext } from '../../context/authContext';
 
 const Mainuser = () => {
     const { id } = useParams();
     const{logged}= useContext(authContext)
+    
+    const[detalles, setDetalles]=useState([])
+    useEffect(()=>{
+        axios.get(`/api/event/history/${id}`)
+        .then(res=>{
+            setDetalles(res.data)
+        })
+        .catch(err=>console.log(err))
+            
+    },[])
+
     return (
         <div>
            
@@ -16,7 +28,8 @@ const Mainuser = () => {
             </section>
             <a href="#"> Edit </a>
             <section>
-                <span>Event History</span>
+                <span>Historial de eventos creados</span>
+                {detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
                 <p> Ultimate frisbee</p>
             </section>
             <section>

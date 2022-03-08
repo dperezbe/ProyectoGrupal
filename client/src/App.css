@@ -111,20 +111,24 @@ body, html {
 
 #futbol-img:hover {
   transform: scale(1.2); 
+  z-index: 1000;
 }
 
 
 #tenis-img:hover {
   transform: scale(1.2); 
+  z-index: 1000;
 }
 
 #basquetbol-img:hover {
   transform: scale(1.2); 
+  z-index: 1000;
 }
 
 
 #baseball-img:hover {
   transform: scale(1.2); 
+  z-index: 1000;
 }
 
 #running-img:hover {

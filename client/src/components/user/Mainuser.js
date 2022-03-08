@@ -1,7 +1,9 @@
+import "../../App.css";
 import axios from 'axios';
 import React, {useContext, useEffect, useState}from 'react';
 import { useParams } from "react-router-dom";
 import { authContext } from '../../context/authContext';
+import { Table } from "reactstrap";
 
 const Mainuser = () => {
     const { id } = useParams();
@@ -19,8 +21,41 @@ const Mainuser = () => {
 
     return (
         <div>
-           
-            <h1>En el main user {id}</h1>
+            <Table id="tableProfile">
+                <tr>
+                    <td>En el main user</td>
+                    <td>{id}</td>
+                    <td><a href="#"> Edit </a></td>
+                </tr>
+
+                <tr>
+                    <td>Name: </td>
+                    <td>{logged.data.username}</td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>{logged.data.email}</td>
+                </tr>
+
+                <tr>
+                    <td>Birth Date</td>
+                    <td>{logged.data.birthdate}</td>
+                </tr>
+
+                <tr>
+                    <td><span>Historial de eventos creados</span></td>
+                    <td>{detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
+                <p> Ultimate frisbee</p></td>
+                </tr>
+
+                <tr>
+                    <td>Otros deportes</td>
+                    <td>Future</td>
+                    <td>Basketball</td>
+                    <td>Voleyball</td>
+                </tr>                
+            </Table>
             <section>
                 <p> Name: {logged.data.username}</p>
                 <p> email: {logged.data.email}</p>

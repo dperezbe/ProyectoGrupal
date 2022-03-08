@@ -10,7 +10,7 @@ const Mainuser = () => {
            
             <h1>En el main user {id}</h1>
             <section>
-                <p> Name: Valentina</p>
+                <p> Name: {logged.data.username}</p>
                 <p> email: {logged.data.email}</p>
                 <p> birthdate: {logged.data.birthdate}</p>
             </section>

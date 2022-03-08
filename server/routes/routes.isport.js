@@ -15,4 +15,6 @@ module.exports = (app) => {
     app.put('/api/members/event/:id', authenticate,isport.addMember); //Agrega un usuario a un evento :id
     app.delete('/api/members/:user/event/:id', authenticate,isport.pullMember); //Borra un usuario :user de un evento :id
 
+
+    app.get('/api/event/history/:id',authenticate,isport.historyeventOwner); // Historial de eventos del miembro :id
 }

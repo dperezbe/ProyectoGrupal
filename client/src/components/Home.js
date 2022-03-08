@@ -3,7 +3,7 @@ import Navegation from "./Navegation";
 import SliderClasification from "./SliderClasification";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
-import CreateEvent from "./events/CreateEvent";
+import CreateEventForm from "./events/CreateEventForm";
 import Mainuser from "./user/Mainuser";
 
 const Home = (props) => {
@@ -18,7 +18,7 @@ const Home = (props) => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/event" element={<CreateEvent />} />
+            <Route path="/new" element={<CreateEventForm />} />
             <Route path="/user/:id" element={<Mainuser />} />
           </Routes>
         </div>

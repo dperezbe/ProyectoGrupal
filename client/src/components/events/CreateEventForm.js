@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { authContext } from "../../context/authContext";
+import axios from "axios";
 
-const CreateEvent = () => {
-  const [newevent, setNewevent] = useState();
+const CreateEventForm = () => {
+  const { logged } = useContext(authContext);
+
+  const [newevent, setNewevent] = useState({ eventOwner: logged.data._id });
 
   const handleForm = (e) => {
     setNewevent({ ...newevent, [e.target.name]: e.target.value });
@@ -10,7 +14,10 @@ const CreateEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newevent);
+    axios
+      .post("/api/event/create", newevent)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -47,4 +54,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default CreateEventForm;

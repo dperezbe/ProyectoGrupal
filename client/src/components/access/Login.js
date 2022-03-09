@@ -47,7 +47,7 @@ const Login = ({ setOption }) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Registrado con exito',
           showConfirmButton: false,
           timer: 1500
         })
@@ -58,7 +58,7 @@ const Login = ({ setOption }) => {
             position: 'center',
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Algo salió mal!',
           })
         }
       })

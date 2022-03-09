@@ -18,6 +18,19 @@ const CreateEventForm = () => {
     if(newevent.eventName === ''){
         return;
     }
+    if(newevent.eventLocation ===''){
+      return;
+    }
+    if(newevent.eventMemberTotal ===''){
+      return;
+    }
+    if(newevent.eventDate ===''){
+      return;
+    }
+    if(newevent.eventDescripcion ===''){
+      return;
+    }
+
     axios
       .post("/api/event/create", newevent)
       .then((res) => console.log(res))

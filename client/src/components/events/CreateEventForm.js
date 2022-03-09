@@ -7,7 +7,7 @@ import axios from "axios";
 const CreateEventForm = () => {
   const { logged } = useContext(authContext);
 
-  const [newevent, setNewevent] = useState({ eventOwner: logged.data._id });
+  const [newevent, setNewevent] = useState({ eventOwner: logged.data._id,eventMembers: logged.data._id});
 
   const handleForm = (e) => {
     setNewevent({ ...newevent, [e.target.name]: e.target.value });

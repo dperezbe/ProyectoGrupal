@@ -1,52 +1,30 @@
 import React from "react";
 import { Table } from "reactstrap";
 
-const TableToday = () => {
+const TableToday = ({ data,showdate }) => {
+  const fecha = new Date();
+
   return (
-    <div>
-      <Table responsive id="table-events-today">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Table heading</th>
-            <th>Table heading</th>
-            <th>Table heading</th>
-            <th>Table heading</th>
-            <th>Table heading</th>
-            <th>Table heading</th>
+    <Table bordered borderless hover responsive size="" striped>
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Location Name</th>
+          <th>Attendees</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data?.map((i) => (
+          <tr key={i._id}>
+            <td>{i.eventName}</td>
+            <td>{i.eventLocation}</td>
+            <td>{i.eventMembers.length} / {i.eventMemberTotal} {i.eventMembers.length === i.eventMemberTotal ? <span className="btn-full">Full</span>:<span className="btn-available">Available</span> } </td>
+            {showdate ? <td>{i.eventDate.substr(0, 16).replace('T', ' ')}</td>: <td>{i.eventDate.substr(11, 5)}</td>}
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+        ))}
+      </tbody>
+    </Table>
   );
 };
 

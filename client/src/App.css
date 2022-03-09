@@ -154,37 +154,33 @@ body, html {
   background-color: rgba(226, 226, 226, 0.301);
 }
 
-#table-events-today{
+.table-events{
   width: 60%;
   margin: 0 auto;
   margin-top: 2%;
 }
 
 .dashboard h3{
-  margin-top: 10px;
-  margin-left: 40px;
+  margin-bottom:20px;
 }
 
-#titleDashboard{
-  text-align: center;
+#showdate{
+  margin-left: 25px;
+  margin-top: 15px;
 }
 
-#titleNew{
-  text-align: center;
-}
-
-#formNew{
-  width: 1000px;
-  margin-left: 50px;
-}
-
-#labelForm{
-  margin-left: 10px;
-}
-
-#tableProfile{
-  width: 1000px;
-  margin-top: 100px;
+.btn-full{
+  background-color: red;
+  color: white;
+  padding: 1px 20px;
+  border-radius: 10px;
   margin-left: 20px;
-  border-radius: 5px;
+}
+
+.btn-available{
+  background-color: rgb(0, 202, 84);
+  color: white;
+  padding: 1px 20px;
+  border-radius: 10px;
+  margin-left: 20px;
 }

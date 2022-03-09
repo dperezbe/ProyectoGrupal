@@ -1,15 +1,44 @@
-import "../../App.css";
-import React from "react";
+import React,{useContext, useState,useEffect} from "react";
 import TableToday from "./TableToday";
+import { authContext } from "../../context/authContext";
+import axios from 'axios';
 
 const Dashboard = () => {
+  const date = new Date();
+  const { logged } = useContext(authContext);
+  const [eventToday,SetEventToday] = useState([]);
+  const [eventFuture,SetEventFuture] = useState([]);
+
+  useEffect(()=>{
+    axios
+    .get(`/api/events/today/${logged.data._id}`)
+    .then((res) => {
+      SetEventToday(res.data);
+    })
+    .catch((err) => console.log(err));   
+  },[])
+
+  useEffect(()=>{
+    axios
+    .get(`/api/events/future/${logged.data._id}`)
+    .then((res) => {
+      SetEventFuture(res.data);
+    })
+    .catch((err) => console.log(err));   
+  },[])
+
   return (
     <div className="dashboard">
-      <h3 id="titleDashboard">Hoy es Domingo 6 de Mazo y tienes los siguientes eventos:</h3>
-      <TableToday />
+      <p id="showdate">{date.toDateString()}</p>
+      <div className="table-events">
+        <h3>Tus eventos para hoy</h3>
+        <TableToday data={eventToday}/>
+      </div>
       <br></br>
-      <h3 id="titleDashboard">Estos son tus futuros eventos:</h3>
-      <TableToday />
+      <div className="table-events">
+        <h3>Tus futuros eventos</h3>
+        <TableToday data={eventFuture} showdate={true}/>
+      </div>
     </div>
   );
 };

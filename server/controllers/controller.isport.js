@@ -90,3 +90,16 @@ module.exports.historyeventOwner = (request,response) =>{
   .then((event) => response.json(event) )
   .catch((err) => response.status(400).json(err));
 }
+
+module.exports.geteventFutureUser = (request, response) => {
+  const today = moment().startOf("day");
+  sport
+    .find({
+      eventMembers:request.params.id,
+      eventDate: {
+        $gte: moment(today).endOf("day").toDate()
+      }
+    })
+    .then((apps) => response.json(apps))
+    .catch((err) => response.status(400).json(err));
+};

@@ -23,55 +23,45 @@ const Mainuser = () => {
         <div>
             <Table id="tableProfile">
                 <tr>
-                    <td>En el main user</td>
-                    <td>{id}</td>
+                    <td id="headerTable">En el main user:</td>
+                    <td id="valueField">{id}</td>
                     <td><a href="#"> Edit </a></td>
                 </tr>
 
                 <tr>
-                    <td>Name: </td>
-                    <td>{logged.data.username}</td>
+                    <td id="headerTable">Name: </td>
+                    <td id="valueField">{logged.data.username}</td>
                 </tr>
 
                 <tr>
-                    <td>Email</td>
-                    <td>{logged.data.email}</td>
+                    <td id="headerTable">Email:</td>
+                    <td id="valueField">{logged.data.email}</td>
                 </tr>
 
                 <tr>
-                    <td>Birth Date</td>
-                    <td>{logged.data.birthdate}</td>
+                    <td id="headerTable">Birth Date:</td>
+                    <td id="valueField">{logged.data.birthdate}</td>
                 </tr>
 
                 <tr>
-                    <td><span>Historial de eventos creados</span></td>
-                    <td>{detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
+                    <td id="headerTable"><span>Historial de eventos creados:</span></td>
+                    <td id="valueField">{detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
                 <p> Ultimate frisbee</p></td>
                 </tr>
 
                 <tr>
-                    <td>Otros deportes</td>
-                    <td>Future</td>
-                    <td>Basketball</td>
-                    <td>Voleyball</td>
+                    <td id="headerTable">Otros deportes:</td>
+
+
+                    <td id="valueField">
+                        <td>
+                            Future <br/>
+                            Basketball <br/>
+                            Voleyball <br/>
+                        </td>
+                    </td>
                 </tr>                
             </Table>
-            <section>
-                <p> Name: {logged.data.username}</p>
-                <p> email: {logged.data.email}</p>
-                <p> birthdate: {logged.data.birthdate}</p>
-            </section>
-            <a href="#"> Edit </a>
-            <section>
-                <span>Historial de eventos creados</span>
-                {detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
-                <p> Ultimate frisbee</p>
-            </section>
-            <section>
-                <span>Future</span>
-                <p>Basketball</p>
-                <p>Volleyball</p>
-            </section>
         </div>
     );
 };

@@ -184,3 +184,23 @@ body, html {
   border-radius: 10px;
   margin-left: 20px;
 }
+
+#tableProfile{
+  width: 1000px;
+  border-radius: 5px;
+  background-color: #D7FFAE;
+  margin-top: 20px;
+  margin-left: 50px
+}
+
+#headerTable{
+  background-color: #87E2FF;
+  width: 310px;
+  height: 50px;
+  padding-left: 10px;
+}
+
+#valueField{
+  width: 100px;  
+  padding-left: 10px;
+}

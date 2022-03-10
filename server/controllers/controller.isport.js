@@ -35,6 +35,7 @@ module.exports.pullMember = (request, response) => {
 module.exports.geteventAll = (request, response) => {
   sport
     .find({})
+    .populate("eventOwner", "-password -createdAt -updatedAt -birthdate -__v")
     .sort({ createdAt: "descending" })
     .then((apps) => response.json(apps))
     .catch((err) => response.status(400).json(err));

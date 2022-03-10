@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import CreateEventForm from "./events/CreateEventForm";
 import Mainuser from "./user/Mainuser";
+import MainSearch from "./search/MainSearch";
 
 const Home = (props) => {
   return (
@@ -18,6 +19,7 @@ const Home = (props) => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/search" element={<MainSearch />} />
             <Route path="/new" element={<CreateEventForm />} />
             <Route path="/user/:id" element={<Mainuser />} />
           </Routes>

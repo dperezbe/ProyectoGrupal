@@ -30,13 +30,15 @@ const CreateEventForm = () => {
     if(newevent.eventDescripcion ===''){
       return;
     }
-
+    console.log("dasd",newevent);
     axios
       .post("/api/event/create", newevent)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
 
+
+  
   return (
     <div>
       <h1 id="titleNew">Crea un nuevo evento</h1>
@@ -44,6 +46,17 @@ const CreateEventForm = () => {
         <FormGroup>
           <Label id="labelForm" for="eventName">Nombre del evento</Label>
           <Input name="eventName" onChange={handleForm} />
+        </FormGroup>
+        <FormGroup>
+        <Label id="labelForm" for="eventName">Categoría</Label>
+        <select className="form-select" name ="eventCategory" aria-label="Default select example" onChange={handleForm}>
+          <option value="" >---- Seleccione una categoría ----</option>
+          <option value="Futbol">Futbol</option>
+          <option value="Basquetbol">Basquetbol</option>
+          <option value="Tenis">Tenis</option>
+          <option value="Running">Running</option>
+          <option value="Baseball">Baseball</option>
+        </select>
         </FormGroup>
         <FormGroup>
           <Label id="labelForm" for="eventLocation">Lugar del evento</Label>

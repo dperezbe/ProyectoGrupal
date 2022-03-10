@@ -18,6 +18,10 @@ var schemaEvents = mongoose.Schema(
       type: String,
       require: [true, "Debe ingresar una localización del evento"],
     },
+    eventCategory: {
+      type: String,
+      require: [true, "Debe ingresar una categoria"],
+    },
     eventMemberTotal: {
       type: Number,
       require: [true, "Ingrese el total de miembros"],

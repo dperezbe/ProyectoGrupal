@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, FormGroup , Label, Input, Button} from "reactstrap"
-import swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 
 const Register = ({setOption}) => {
@@ -53,6 +53,14 @@ const Register = ({setOption}) => {
         axios.post('/api/user',inputs)
         .then(res=>{
             setInputs(initialValues)})
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registrado con exito',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              setOption(true)
         .catch(err=>console.log(err))
     }
     const changeOption = () =>{

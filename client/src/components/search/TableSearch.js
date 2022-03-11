@@ -97,8 +97,8 @@ const TableSearch = () => {
                       <td><a className="a-decoration" href={'/event/'+item._id}>{item.eventName}</a></td>
                       <td>{item.eventLocation}</td>
                       <td className="attendees">
-                        {item.eventMembers.length} / {item.eventMemberTotal}{" "}
-                        {item.eventMembers.length === item.eventMemberTotal ? (
+                        {item.eventMembers.length} / {item.eventMemberTotal}
+                        {item.eventMembers.length >= item.eventMemberTotal ? (
                           <span className="btn-full">Full</span>
                         ) : (
                           <span className="btn-available">Available</span>

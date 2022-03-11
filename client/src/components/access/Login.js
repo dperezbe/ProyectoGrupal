@@ -47,7 +47,7 @@ const Login = ({ setOption }) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Registrado con exito',
+          title: 'Bienvenido a iSport',
           showConfirmButton: false,
           timer: 1500
         })

@@ -5,9 +5,23 @@ import { authContext } from "../../context/authContext";
 import axios from "axios";
 
 const CreateEventForm = () => {
+
   const { logged } = useContext(authContext);
 
-  const [newevent, setNewevent] = useState({ eventOwner: logged.data._id,eventMembers: logged.data._id});
+  const eventDetails={
+    eventName:"",
+    eventLocation:"",
+    eventMemberTotal:"",
+    eventDate:"",
+    eventDescripcion:"",
+    eventMembers: logged.data._id
+  }
+
+  const {eventName,eventLocation,eventMemberTotal,eventDate,eventDescripcion,eventMembers} = eventDetails;
+
+
+
+  const [newevent, setNewevent] = useState({eventName,eventLocation,eventMemberTotal,eventDate,eventDescripcion,eventMembers, eventOwner: logged.data._id });
 
   const handleForm = (e) => {
     setNewevent({ ...newevent, [e.target.name]: e.target.value });
@@ -15,28 +29,28 @@ const CreateEventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(newevent.eventName === ''){
+    if(newevent.eventName === '' || newevent?.eventName?.length<6){
         return;
     }
-    if(newevent.eventLocation ===''){
+    if(newevent.eventLocation ==='' || newevent?.eventLocation?.length<4){
       return;
     }
-    if(newevent.eventMemberTotal ===''){
+    if(newevent.eventMemberTotal ==='' || newevent?.eventMemberTotal<2){
       return;
     }
+    
     if(newevent.eventDate ===''){
       return;
     }
     if(newevent.eventDescripcion ===''){
       return;
     }
-    console.log("dasd",newevent);
+
     axios
       .post("/api/event/create", newevent)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-
 
   
   return (
@@ -50,7 +64,7 @@ const CreateEventForm = () => {
         <FormGroup>
         <Label id="labelForm" for="eventName">Categoría</Label>
         <select className="form-select" name ="eventCategory" aria-label="Default select example" onChange={handleForm}>
-          <option value="" >---- Seleccione una categoría ----</option>
+          <option value="" >Otra categoría</option>
           <option value="Futbol">Futbol</option>
           <option value="Basquetbol">Basquetbol</option>
           <option value="Tenis">Tenis</option>
@@ -61,18 +75,22 @@ const CreateEventForm = () => {
         <FormGroup>
           <Label id="labelForm" for="eventLocation">Lugar del evento</Label>
           <Input name="eventLocation" onChange={handleForm} />
+          {newevent.eventLocation.length<4?<p className="pAlert">Debe contener al menos 4 caracteres</p>:null}<br></br>
         </FormGroup>
         <FormGroup>
           <Label id="labelForm" for="eventMemberTotal">Total de jugadores</Label>
           <Input name="eventMemberTotal" onChange={handleForm} />
+          {newevent.eventMemberTotal<2?<p className="pAlert">Tiene que ser mayor que 2 </p>:null} <br></br>
         </FormGroup>
         <FormGroup>
           <Label id="labelForm" for="eventDate">Día del evento</Label>
           <Input type="datetime-local" name="eventDate" onChange={handleForm} />
+          {newevent.eventDate?null:<p className="pAlert">Este campo no puede estar vacío </p> } <br></br>
         </FormGroup>
         <FormGroup className="position-relative">
           <Label id="labelForm" for="eventDescripcion">Decripción del evento</Label>
           <Input name="eventDescripcion" onChange={handleForm} />
+          {newevent.eventDescripcion?null:<p className="pAlert">Este campo no puede estar vació </p>} <br></br>
         </FormGroup>
         <div>
           <Button active block color="primary" type="submit">

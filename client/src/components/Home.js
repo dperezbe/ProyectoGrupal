@@ -6,6 +6,7 @@ import Dashboard from "./dashboard/Dashboard";
 import CreateEventForm from "./events/CreateEventForm";
 import Mainuser from "./user/Mainuser";
 import MainSearch from "./search/MainSearch";
+import EventInformation from "./events/EventInformation";
 
 const Home = (props) => {
   return (
@@ -22,6 +23,7 @@ const Home = (props) => {
             <Route path="/search" element={<MainSearch />} />
             <Route path="/new" element={<CreateEventForm />} />
             <Route path="/user/:id" element={<Mainuser />} />
+            <Route path="/event/:id" element={<EventInformation />} />
           </Routes>
         </div>
       </div>

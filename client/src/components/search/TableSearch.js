@@ -102,7 +102,7 @@ const TableSearch = () => {
                           <span className="btn-full">Full</span>
                         ) : (
                           <span className="btn-available">Available</span>
-                        )}{" "}
+                        )}
                       </td>
                       <td>{item.eventDate.substr(0, 16).replace("T", " ")}</td>
                       <td>

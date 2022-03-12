@@ -273,3 +273,51 @@ body, html {
  width: 70%;
  margin-left: 5%;
 }
+
+.btn-info-event{
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.eve-info{
+  border: solid 3px blue;
+  border-left: none;
+  border-radius: 20px;
+  height: 340px;
+}
+
+.main-eve-info{
+  margin: 4%;
+}
+
+.btn-top-eve{
+  margin-top: 70px;
+}
+
+#event-information{
+  margin-top: 35px;
+}
+
+.event-date{
+  margin-top: 30px;
+  margin-left: 7px;
+}
+
+.event-description h3{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.event-description{
+  margin: 4%;
+}
+
+.event-user h3{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.event-user{
+  margin-left: 30px;
+}
+

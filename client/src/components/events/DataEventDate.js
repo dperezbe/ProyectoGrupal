@@ -1,7 +1,6 @@
 import React from 'react';
 
 const DataEventDate = ({data}) => {
-    console.log(data);
     return (
         <div className='event-date'>
             <p><b>Title:</b> {data?.eventName}</p>

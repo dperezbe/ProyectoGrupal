@@ -1,4 +1,5 @@
 const sport = require("../models/model.isport");
+const chat = require("../models/model.chatevent");
 const mongoose = require("mongoose");
 const moment = require("moment");
 
@@ -104,3 +105,19 @@ module.exports.geteventFutureUser = (request, response) => {
     .then((apps) => response.json(apps))
     .catch((err) => response.status(400).json(err));
 };
+
+module.exports.chatnewmessage = (request, response) => {
+  chat
+  .create(request.body)
+  .then((app) => response.json(true))
+  .catch((err) => response.status(400).json(err));
+};
+
+module.exports.chatgetmessage = (request, response) => {
+  chat
+  .find({event:request.params.id})
+  .populate("user", "-password -createdAt -updatedAt -birthdate -__v")
+  .then((apps) => response.json(apps))
+  .catch((err) => response.status(400).json(err));
+};
+

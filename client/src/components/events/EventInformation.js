@@ -5,6 +5,7 @@ import { Button } from "reactstrap";
 import DataEventDate from "./DataEventDate.js";
 import DataEventInfo from "./DataEventInfo.js";
 import DataEventUser from "./DataEventUser.js";
+import MainChatEvent from "./MainChatEvent.js";
 
 const EventInformation = () => {
   const [data, eventData] = useState();
@@ -29,7 +30,6 @@ const EventInformation = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log("url", urlmap);
   return (
     <div>
       <div className="row" id="event-information">
@@ -86,6 +86,7 @@ const EventInformation = () => {
           <p>Evento sin localización</p>
         )}
       </div>
+      <MainChatEvent id = {id}/>
     </div>
   );
 };

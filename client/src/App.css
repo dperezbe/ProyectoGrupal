@@ -321,3 +321,18 @@ body, html {
   margin-left: 30px;
 }
 
+.chat-event{
+  margin: 2% 5%;
+  height: 220px;
+}
+
+.btn-send-form-message{
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.btn-send-input{
+  width: 190px;
+  margin-left: 50px;
+}

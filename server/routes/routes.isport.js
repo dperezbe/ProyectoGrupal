@@ -18,4 +18,12 @@ module.exports = (app) => {
 
 
     app.get('/api/event/history/:id',authenticate,isport.historyeventOwner); // Historial de eventos creatos por el miembro :id
+
+
+    app.post('/api/chat', authenticate,isport.chatnewmessage); // New Message to event
+    app.get('/api/chat/:id', authenticate,isport.chatgetmessage); // Obtener mensajes de un eveno
+
 }
+
+
+

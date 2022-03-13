@@ -17,7 +17,7 @@ const TableToday = ({ data,showdate }) => {
       <tbody>
         {data?.map((i) => (
           <tr key={i._id}>
-            <td>{i.eventName}</td>
+            <td><a className="a-decoration" href={'/event/'+i._id}>{i.eventName}</a></td>
             <td>{i.eventLocation}</td>
             <td>{i.eventMembers.length} / {i.eventMemberTotal} {i.eventMembers.length === i.eventMemberTotal ? <span className="btn-full">Full</span>:<span className="btn-available">Available</span> } </td>
             {showdate ? <td>{i.eventDate.substr(0, 16).replace('T', ' ')}</td>: <td>{i.eventDate.substr(11, 5)}</td>}

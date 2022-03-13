@@ -39,7 +39,6 @@ body, html {
 }
 
 .welcome-fit p{
-  
   font-size: 48px;
 }
 
@@ -292,6 +291,9 @@ body, html {
 
 .btn-top-eve{
   margin-top: 70px;
+}
+.main-event-route{
+  zoom: 80%;
 }
 
 #event-information{

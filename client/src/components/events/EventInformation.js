@@ -31,7 +31,7 @@ const EventInformation = () => {
   }, []);
 
   return (
-    <div>
+    <div className="main-event-route">
       <div className="row" id="event-information">
         <div className="col-sm-6">
           <div className="main-eve-info">

@@ -212,8 +212,9 @@ body, html {
 #headerTable{
   background-color: #87E2FF;
   width: 310px;
-  height: 100px;
+  height: 200px;
   padding-left: 10px;
+  padding-right: 10px;
   display: inline;
   border-radius: 5px;
 }
@@ -221,10 +222,14 @@ body, html {
 #valueField{
   width: 400px;
   height: 100px;  
-  padding-left: 10px;
-  background-color: green;
+  padding-left: 10px;  
+  display: inline;  
+}
+
+#editProfile{
+  width: 200px;
+  padding-left: 100px;
   display: inline;
-  
 }
 
 .pageclick button{

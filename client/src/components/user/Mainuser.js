@@ -29,14 +29,14 @@ const Mainuser = () => {
     return (
         <div>
             <div id="fields">
-                <p id="headerTable">En el main user:</p>                
-                <p id="valueField">{id}</p>
-                <a href="#"> Edit </a>
+                    <p id="headerTable">En el main user:</p>
+                    <p id="valueField">{id}</p>
+                    <p id="editProfile"><a href="#"> Edit </a></p>
             </div>
 
             <div id="fields">
-                <p id="headerTable">Name:</p>
-                <p id="valueField">{whois?.username}</p>
+                    <p id="headerTable">Name:</p>
+                    <p id="valueField">{whois?.username}</p>
             </div>
 
             <div id="fields">
@@ -51,15 +51,14 @@ const Mainuser = () => {
 
             <div id="fields">
                 <p id="headerTable">Historial de eventos creados:</p>
-                <p id="valueField">
-                </p>
+                <h6 id="valueField">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}</h6>
             </div>
 
             <div id="fields">
-                <p id="valueField">Otros deportes:</p>
-                <p id="valueField">Future</p>
-                <p id="valueField">Basketball</p>
-                <p id="valueField">Voleyball</p>
+                <p id="headerTable">Otros deportes:</p><br/>
+                    <p id="valueField">Future</p><br/>
+                    <p id="valueField">Basketball</p><br/>
+                    <p id="valueField">Voleyball</p>
             </div>
         </div>
     );

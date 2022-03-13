@@ -13,6 +13,11 @@ module.exports.createevent = (req, res) => {
 
 module.exports.addMember = (request, response) => {
   sport
+    .findById(request.params.id )
+    .then((data) => {
+      if(data.eventMembers.length<data.eventMemberTotal)
+      {
+         sport
     .findOneAndUpdate(
       { _id: request.params.id },
       { $addToSet: request.body },
@@ -20,6 +25,21 @@ module.exports.addMember = (request, response) => {
     )
     .then((data) => response.json(data))
     .catch((err) => response.json(err));
+      }
+      else{
+        response.json("full")
+      }
+    })
+    .catch((err) => response.json(err));
+
+  // sport
+  //   .findOneAndUpdate(
+  //     { _id: request.params.id },
+  //     { $addToSet: request.body },
+  //     { new: true }
+  //   )
+  //   .then((data) => response.json(data))
+  //   .catch((err) => response.json(err));
 };
 
 module.exports.pullMember = (request, response) => {

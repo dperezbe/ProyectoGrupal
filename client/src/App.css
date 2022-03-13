@@ -108,6 +108,7 @@ body, html {
 
 .slider-clasification ul {
   padding-left: 0;
+  margin: 0;
 }
 
 .slider-clasification img{
@@ -119,29 +120,29 @@ body, html {
 }
 
 #futbol-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   z-index: 1000;
 }
 
 
 #tenis-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   z-index: 1000;
 }
 
 #basquetbol-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   z-index: 1000;
 }
 
 
 #baseball-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   z-index: 1000;
 }
 
 #running-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .menu-clasificacion {
@@ -154,9 +155,14 @@ body, html {
 }
 
 .table-events{
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
   margin-top: 2%;
+}
+.table-main{
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .table-events-search{
@@ -208,7 +214,7 @@ body, html {
 }
 
 #valueField{
-  width: 100px;  
+  width: 100px;
   padding-left: 10px;
 }
 
@@ -281,10 +287,12 @@ body, html {
 }
 
 .eve-info{
-  border: solid 3px blue;
+  border: solid 4px rgba(0, 0, 255, 0.575);
   border-left: none;
   border-radius: 20px;
   height: 340px;
+  background-color: white;
+  font-size: 18px;
 }
 
 .main-eve-info{

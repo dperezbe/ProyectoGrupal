@@ -32,12 +32,16 @@ const Dashboard = () => {
       <p id="showdate">{date.toDateString()}</p>
       <div className="table-events">
         <h3>Tus eventos para hoy</h3>
-        <TableToday data={eventToday}/>
+        <div  className="table-main">
+        <TableToday data={eventToday} />
+        </div>
       </div>
       <br></br>
       <div className="table-events">
         <h3>Tus futuros eventos</h3>
+        <div className="table-main">
         <TableToday data={eventFuture} showdate={true}/>
+        </div>
       </div>
     </div>
   );

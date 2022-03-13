@@ -198,16 +198,31 @@ body, html {
   margin-left: 50px
 }
 
+#fields{
+  width: 1000px;
+  padding-left: 150px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
 #headerTable{
   background-color: #87E2FF;
   width: 310px;
-  height: 50px;
+  height: 100px;
   padding-left: 10px;
+  display: inline;
+  border-radius: 5px;
 }
 
 #valueField{
-  width: 100px;  
+  width: 400px;
+  height: 100px;  
   padding-left: 10px;
+  background-color: green;
+  display: inline;
+  
 }
 
 .pageclick button{

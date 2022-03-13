@@ -28,47 +28,39 @@ const Mainuser = () => {
 
     return (
         <div>
-            <Table id="tableProfile">
-                <tr>
-                    <td id="headerTable">En el main user:</td>
-                    <td id="valueField">{id}</td>
-                    <td><a href="#"> Edit </a></td>
-                </tr>
+            <div id="fields">
+                <p id="headerTable">En el main user:</p>                
+                <p id="valueField">{id}</p>
+                <a href="#"> Edit </a>
+            </div>
 
-                <tr>
-                    <td id="headerTable">Name: </td>
-                    <td id="valueField">{whois?.username}</td>
-                </tr>
+            <div id="fields">
+                <p id="headerTable">Name:</p>
+                <p id="valueField">{whois?.username}</p>
+            </div>
 
-                <tr>
-                    <td id="headerTable">Email:</td>
-                    <td id="valueField">{whois?.email}</td>
-                </tr>
+            <div id="fields">
+                <p id="headerTable">Email:</p>
+                <p id="valueField">{whois?.email}</p>
+            </div>
 
-                <tr>
-                    <td id="headerTable">Birth Date:</td>
-                    <td id="valueField">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</td>
-                </tr>
+            <div id="fields">
+                <p id="headerTable">Birth Date:</p>
+                <p id="valueField">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</p>
+            </div>
 
-                <tr>
-                    <td id="headerTable"><span>Historial de eventos creados:</span></td>
-                    <td id="valueField">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}
-                <p> Ultimate frisbee</p></td>
-                </tr>
+            <div id="fields">
+                <p id="headerTable">Historial de eventos creados:</p>
+                <p id="valueField">
+                </p>
+            </div>
 
-                <tr>
-                    <td id="headerTable">Otros deportes:</td>
-
-
-                    <td id="valueField">
-                        <td>
-                            Future <br/>
-                            Basketball <br/>
-                            Voleyball <br/>
-                        </td>
-                    </td>
-                </tr>                
-            </Table>
+            <div id="fields">
+                <p id="valueField">Otros deportes:</p>
+                <p id="valueField">Future</p>
+                <p id="valueField">Basketball</p>
+                <p id="valueField">Voleyball</p>
+            </div>
         </div>
     );
 };

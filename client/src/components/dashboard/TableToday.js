@@ -5,7 +5,7 @@ const TableToday = ({ data,showdate }) => {
   const fecha = new Date();
 
   return (
-    <Table bordered borderless hover responsive size="" striped>
+    <Table bordered borderless hover responsive size="" striped style={{"margin":"0"}}>
       <thead>
         <tr>
           <th>Event Name</th>

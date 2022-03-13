@@ -73,7 +73,7 @@ const TableSearch = () => {
           responsive
           size=""
           striped
-          className="table-search"
+          className="table-search table-main"
         >
           <thead>
             <tr>

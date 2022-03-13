@@ -98,11 +98,6 @@ const TableSearch = () => {
                       <td>{item.eventLocation}</td>
                       <td className="attendees">
                         {item.eventMembers.length} / {item.eventMemberTotal}
-                        {item.eventMembers.length >= item.eventMemberTotal ? (
-                          <span className="btn-full">Full</span>
-                        ) : (
-                          <span className="btn-available">Available</span>
-                        )}
                       </td>
                       <td>{item.eventDate.substr(0, 16).replace("T", " ")}</td>
                       <td>
@@ -113,8 +108,13 @@ const TableSearch = () => {
                           {item.eventOwner.username}
                         </a>
                       </td>
-                      <td onClick={() => joinevent(item._id)} className="join">
-                        Join to event
+                      <td>
+                        {item.eventMembers.length >= item.eventMemberTotal ? (
+                          <span className="btn-full">Event is full</span>
+                        ) : (
+                          <span className="btn-available" onClick={() => joinevent(item._id)} >Join to event</span>
+                        )}
+                        
                       </td>
                     </tr>
                   ))

@@ -39,3 +39,9 @@ module.exports.login = (req, res) => {
 
 
 
+module.exports.whois = (req,res) => {
+    User
+    .findById(req.params.id,"-password -createdAt -updatedAt -__v")
+    .then(data => res.json({ data: data, message: null, error: false}))
+    .catch(error => res.json({ data: null, message: error, error: true}));
+}

@@ -9,14 +9,21 @@ const Mainuser = () => {
     const { id } = useParams();
     const{logged}= useContext(authContext)
     
-    const[detalles, setDetalles]=useState([])
+    const[createdEvents, setCreatedEvents]=useState([])
+    const[whois, setWhois]=useState()
+
     useEffect(()=>{
         axios.get(`/api/event/history/${id}`)
         .then(res=>{
-            setDetalles(res.data)
+            setCreatedEvents(res.data)
         })
         .catch(err=>console.log(err))
             
+        axios.get(`/api/whois/${id}`)
+        .then(res=>{
+            setWhois(res.data.data)
+        })
+        .catch(err=>console.log(err))
     },[])
 
     return (
@@ -30,22 +37,22 @@ const Mainuser = () => {
 
                 <tr>
                     <td id="headerTable">Name: </td>
-                    <td id="valueField">{logged.data.username}</td>
+                    <td id="valueField">{whois?.username}</td>
                 </tr>
 
                 <tr>
                     <td id="headerTable">Email:</td>
-                    <td id="valueField">{logged.data.email}</td>
+                    <td id="valueField">{whois?.email}</td>
                 </tr>
 
                 <tr>
                     <td id="headerTable">Birth Date:</td>
-                    <td id="valueField">{logged.data.birthdate}</td>
+                    <td id="valueField">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</td>
                 </tr>
 
                 <tr>
                     <td id="headerTable"><span>Historial de eventos creados:</span></td>
-                    <td id="valueField">{detalles?.map(t => <p key={t._id}>{t.eventName}</p>)}
+                    <td id="valueField">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}
                 <p> Ultimate frisbee</p></td>
                 </tr>
 

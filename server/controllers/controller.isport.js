@@ -141,3 +141,10 @@ module.exports.chatgetmessage = (request, response) => {
   .catch((err) => response.status(400).json(err));
 };
 
+module.exports.deleteevent = (request,response) =>{
+  sport
+  .findByIdAndDelete(request.params.id)
+  .then((app) => response.json(true))
+  .catch((err) => response.status(400).json(err));
+
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Table } from "reactstrap";
 import axios from "axios";
 import { authContext } from "../../context/authContext";
+import Swal from 'sweetalert2'
 
 const TableSearch = () => {
   const { logged } = useContext(authContext);
@@ -15,8 +16,26 @@ const TableSearch = () => {
   const joinevent = (idevent) => {
     axios
       .put(`api/members/event/${idevent}`, { eventMembers: logged.data._id })
-      .then((res) => {console.log(res)})
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Se unió al evento  ',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .catch((err) => {
+
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo unir al evento !',
+        })
+      }
+      );
   };
 
   useEffect(() => {
@@ -40,7 +59,7 @@ const TableSearch = () => {
       ...datos,
       pageIndex:
         prevState.pageIndex <
-        Math.floor(prevState.items.length / prevState.pageSize)
+          Math.floor(prevState.items.length / prevState.pageSize)
           ? prevState.pageIndex + 1
           : prevState.pageIndex,
     }));
@@ -88,36 +107,36 @@ const TableSearch = () => {
           <tbody>
             {datos.items
               ? datos.items
-                  .slice(
-                    datos.pageIndex * datos.pageSize,
-                    datos.pageIndex * datos.pageSize + datos.pageSize
-                  )
-                  .map((item) => (
-                    <tr key={item._id}>
-                      <td><a className="a-decoration" href={'/event/'+item._id}>{item.eventName}</a></td>
-                      <td>{item.eventLocation}</td>
-                      <td className="attendees">
-                        {item.eventMembers.length} / {item.eventMemberTotal}
-                      </td>
-                      <td>{item.eventDate.substr(0, 16).replace("T", " ")}</td>
-                      <td>
-                        <a
-                          className="a-decoration"
-                          href={"/user/" + item.eventOwner._id}
-                        >
-                          {item.eventOwner.username}
-                        </a>
-                      </td>
-                      <td>
-                        {item.eventMembers.length >= item.eventMemberTotal ? (
-                          <span className="btn-full">Event is full</span>
-                        ) : (
-                          <span className="btn-available" onClick={() => joinevent(item._id)} >Join to event</span>
-                        )}
-                        
-                      </td>
-                    </tr>
-                  ))
+                .slice(
+                  datos.pageIndex * datos.pageSize,
+                  datos.pageIndex * datos.pageSize + datos.pageSize
+                )
+                .map((item) => (
+                  <tr key={item._id}>
+                    <td><a className="a-decoration" href={'/event/' + item._id}>{item.eventName}</a></td>
+                    <td>{item.eventLocation}</td>
+                    <td className="attendees">
+                      {item.eventMembers.length} / {item.eventMemberTotal}
+                    </td>
+                    <td>{item.eventDate.substr(0, 16).replace("T", " ")}</td>
+                    <td>
+                      <a
+                        className="a-decoration"
+                        href={"/user/" + item.eventOwner._id}
+                      >
+                        {item.eventOwner.username}
+                      </a>
+                    </td>
+                    <td>
+                      {item.eventMembers.length >= item.eventMemberTotal ? (
+                        <span className="btn-full">Event is full</span>
+                      ) : (
+                        <span className="btn-available" onClick={() => joinevent(item._id)} >Join to event</span>
+                      )}
+
+                    </td>
+                  </tr>
+                ))
               : null}
           </tbody>
         </Table>

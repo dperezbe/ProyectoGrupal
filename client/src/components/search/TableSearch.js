@@ -3,9 +3,14 @@ import { Table } from "reactstrap";
 import axios from "axios";
 import { authContext } from "../../context/authContext";
 import Swal from 'sweetalert2'
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const TableSearch = () => {
   const { logged } = useContext(authContext);
+  const [usuarios, setUsuarios]=useState([]);
+  const [tablaUsuarios, setTablaUsuarios]=useState([]);
+  const [busqueda, setBusqueda]=useState("");
 
   const [datos, setDatos] = useState({
     pageSize: 5,
@@ -43,6 +48,7 @@ const TableSearch = () => {
       .get(`/api/events`)
       .then((res) => {
         setDatos({ ...datos, items: res.data });
+        peticionGet();
       })
       .catch((err) => console.log(err));
   }, []);
@@ -65,9 +71,68 @@ const TableSearch = () => {
     }));
   };
 
+  const peticionGet=async()=>{
+    /*
+      app.get('/api/member/:id', authenticate,isport.geteventsByUser); //Obtiene los eventos de un usuario :id
+    */
+    //await axios.get("https://jsonplaceholder.typicode.com/users")
+    await axios.get("/api/member/:id")
+    .then(response => {
+      setUsuarios(response.data);
+      setTablaUsuarios(response.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  const handleChange=e=>{
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  }
+
+  const filtrar=(terminoBusqueda)=>{
+    var resultadosBusqueda=tablaUsuarios.filter((elemento) =>{
+      if(elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento;
+      }    
+    });
+    setUsuarios(resultadosBusqueda);
+  }
+    
+
   return (
     <div>
       <div>
+
+        <div className="containerInput">
+          <input className="form-control inputBuscar" value={busqueda} placeholder="Busqueda por Nombre del evento." onChange={handleChange}/>
+        </div>
+        <div className="table-responsive">
+        <table className="table table-sm table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>              
+            </tr>
+          </thead>
+
+          <tbody>
+              {usuarios && 
+              usuarios.map((usuario)=>(
+                <tr key={usuario.id}>
+                    <td>{usuario.id}</td>
+                </tr>
+              ))}
+            </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
         <div className="form-search-eve">
           <input placeholder="Event Name" className="search-event" />
           <h6>Search By</h6>

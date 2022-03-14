@@ -27,40 +27,30 @@ const Mainuser = () => {
     },[])
 
     return (
-        <div>
-            <div id="fields">
-                    <p id="headerTable">En el main user:</p>
-                    <p id="valueField">{id}</p>
-                    <p id="editProfile"><a href="#"> Edit </a></p>
-            </div>
+    <Table id="tableProfile">
+        <thead>
+            <tr id="titleProfile" align="center">
+                <th id="field1">ID.</th>
+                <th id="field2">Name.</th>
+                <th id="field3">Email.</th>
+                <th id="field4">Birth Date.</th>
+                <th id="field5">Historial de eventos creados.</th>
+                <th id="field6">Otros deportes.</th>
+                <th id="field7"><a href="#"> Edit </a></th>
+            </tr>
+        </thead>
 
-            <div id="fields">
-                    <p id="headerTable">Name:</p>
-                    <p id="valueField">{whois?.username}</p>
-            </div>
-
-            <div id="fields">
-                <p id="headerTable">Email:</p>
-                <p id="valueField">{whois?.email}</p>
-            </div>
-
-            <div id="fields">
-                <p id="headerTable">Birth Date:</p>
-                <p id="valueField">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</p>
-            </div>
-
-            <div id="fields">
-                <p id="headerTable">Historial de eventos creados:</p>
-                <h6 id="valueField">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}</h6>
-            </div>
-
-            <div id="fields">
-                <p id="headerTable">Otros deportes:</p><br/>
-                    <p id="valueField">Future</p><br/>
-                    <p id="valueField">Basketball</p><br/>
-                    <p id="valueField">Voleyball</p>
-            </div>
-        </div>
+        <tbody>
+            <tr align="center">
+                <th id="field1">{id}</th> 
+                <th id="field2">{whois?.username}</th>
+                <th id="field3">{whois?.email}</th>
+                <th id="field4">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</th>
+                <th id="field5">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}</th>
+                <th id="field6">Future <br/> Basketball <br/> Voleyball</th>
+            </tr>
+        </tbody>
+    </Table>
     );
 };
 

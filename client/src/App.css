@@ -198,26 +198,6 @@ body, html {
   cursor: pointer;
 }
 
-#tableProfile{
-  width: 1000px;
-  border-radius: 5px;
-  background-color: #D7FFAE;
-  margin-top: 20px;
-  margin-left: 50px
-}
-
-#headerTable{
-  background-color: #87E2FF;
-  width: 310px;
-  height: 50px;
-  padding-left: 10px;
-}
-
-#valueField{
-  width: 100px;
-  padding-left: 10px;
-}
-
 .pageclick button{
   margin-left: 60px;
   padding: 1%;
@@ -348,3 +328,28 @@ body, html {
   width: 190px;
   margin-left: 50px;
 }
+
+#tableProfile{
+  width: 1000px;
+  background-color: #D7FFAE;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+#titleProfile{
+  background-color: #A1D86A;
+}
+
+#field4{
+  width: 250px;
+}
+
+#field5{
+  width: 500px;
+}
+
+#field6{
+  width: 250px;
+}
+
+

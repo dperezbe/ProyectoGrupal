@@ -72,11 +72,7 @@ const TableSearch = () => {
   };
 
   const peticionGet=async()=>{
-    /*
-      app.get('/api/member/:id', authenticate,isport.geteventsByUser); //Obtiene los eventos de un usuario :id
-    */
-    //await axios.get("https://jsonplaceholder.typicode.com/users")
-    await axios.get("/api/member/:id")
+    await axios.get("https://jsonplaceholder.typicode.com/users")
     .then(response => {
       setUsuarios(response.data);
       setTablaUsuarios(response.data);
@@ -111,7 +107,14 @@ const TableSearch = () => {
         <table className="table table-sm table-bordered">
           <thead>
             <tr>
-              <th>ID</th>              
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Telefono</th>
+              <th>Nombre de Usuario</th>
+              <th>Correo</th>
+              <th>Sitio Web</th>
+              <th>Ciudad</th>
+              <th>Empresa</th>             
             </tr>
           </thead>
 
@@ -120,6 +123,13 @@ const TableSearch = () => {
               usuarios.map((usuario)=>(
                 <tr key={usuario.id}>
                     <td>{usuario.id}</td>
+                    <td>{usuario.name}</td>
+                    <td>{usuario.phone}</td>
+                    <td>{usuario.username}</td>
+                    <td>{usuario.email}</td>
+                    <td>{usuario.website}</td>
+                    <td>{usuario.address.city}</td>
+                    <td>{usuario.company.name}</td>
                 </tr>
               ))}
             </tbody>

@@ -35,7 +35,6 @@ const Mainuser = () => {
                 <th id="field3">Email.</th>
                 <th id="field4">Birth Date.</th>
                 <th id="field5">Historial de eventos creados.</th>
-                <th id="field6">Otros deportes.</th>
                 <th id="field7"><a href="#"> Edit </a></th>
             </tr>
         </thead>
@@ -47,7 +46,6 @@ const Mainuser = () => {
                 <th id="field3">{whois?.email}</th>
                 <th id="field4">{whois?.birthdate.substr(0, 10).replace('T', ' ')}</th>
                 <th id="field5">{createdEvents?.map(t => <p key={t._id}>{t.eventName}</p>)}</th>
-                <th id="field6">Future <br/> Basketball <br/> Voleyball</th>
             </tr>
         </tbody>
     </Table>

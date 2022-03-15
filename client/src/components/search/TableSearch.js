@@ -11,6 +11,7 @@ const TableSearch = () => {
   const [usuarios, setUsuarios]=useState([]);
   const [tablaUsuarios, setTablaUsuarios]=useState([]);
   const [busqueda, setBusqueda]=useState("");
+  const [busqueda2, setBusqueda2]=useState("");
 
   const [datos, setDatos] = useState({
     pageSize: 5,
@@ -72,7 +73,8 @@ const TableSearch = () => {
   };
 
   const peticionGet=async()=>{
-    await axios.get("https://jsonplaceholder.typicode.com/users")
+    //await axios.get("https://jsonplaceholder.typicode.com/users")
+    await axios.get("/api/events")
     .then(response => {
       setUsuarios(response.data);
       setTablaUsuarios(response.data);
@@ -86,135 +88,88 @@ const TableSearch = () => {
     filtrar(e.target.value);
   }
 
+  const handleChange2=e=>{
+    setBusqueda2(e.target.value);
+    filtrar2(e.target.value);
+  }
+
   const filtrar=(terminoBusqueda)=>{
     var resultadosBusqueda=tablaUsuarios.filter((elemento) =>{
-      if(elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if(elemento.eventName.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento;
       }    
     });
     setUsuarios(resultadosBusqueda);
   }
-    
+
+  const filtrar2=(terminoBusqueda2)=>{
+    if(terminoBusqueda2 == ""){
+      setUsuarios(tablaUsuarios);
+    }else{
+      var resultadosBusqueda2=tablaUsuarios.filter((elemento) =>{
+      //console.log(elemento.eventCategory);
+      if(elemento.eventCategory == terminoBusqueda2){
+        return elemento;
+      }
+    });
+    //console.log(resultadosBusqueda2);
+    setUsuarios(resultadosBusqueda2);
+    }    
+  }
 
   return (
     <div>
       <div>
-
         <div className="containerInput">
-          <input className="form-control inputBuscar" value={busqueda} placeholder="Busqueda por Nombre del evento." onChange={handleChange}/>
+          <input className="form-control inputBuscar" value={busqueda} placeholder="Find for event name." onChange={handleChange}/>
         </div>
-        <div className="table-responsive">
-        <table className="table table-sm table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Telefono</th>
-              <th>Nombre de Usuario</th>
-              <th>Correo</th>
-              <th>Sitio Web</th>
-              <th>Ciudad</th>
-              <th>Empresa</th>             
-            </tr>
-          </thead>
-
-          <tbody>
-              {usuarios && 
-              usuarios.map((usuario)=>(
-                <tr key={usuario.id}>
-                    <td>{usuario.id}</td>
-                    <td>{usuario.name}</td>
-                    <td>{usuario.phone}</td>
-                    <td>{usuario.username}</td>
-                    <td>{usuario.email}</td>
-                    <td>{usuario.website}</td>
-                    <td>{usuario.address.city}</td>
-                    <td>{usuario.company.name}</td>
-                </tr>
-              ))}
-            </tbody>
-        </table>
-      </div>
-
-
-
-
-
-
-
-
-        <div className="form-search-eve">
-          <input placeholder="Event Name" className="search-event" />
-          <h6>Search By</h6>
-          <select
-            className="search-event search-even-cat"
-            name="eventCategory"
-            aria-label="Default select example"
-          >
-            <option value="">Todas las categoría </option>
+        <br/>
+        <select className="search-event search-even-cat" name="eventCategory" aria-label="Default select example" onChange={handleChange2} value={busqueda2}>
+            <option value="">All Categories.</option>
             <option value="Futbol">Futbol</option>
             <option value="Basquetbol">Basquetbol</option>
             <option value="Tenis">Tenis</option>
             <option value="Running">Running</option>
             <option value="Baseball">Baseball</option>
           </select>
-          <input type="button" value="Search" className="btn-search" />
-        </div>
-        <Table
-          bordered
-          borderless
-          hover
-          responsive
-          size=""
-          striped
-          className="table-search table-main"
-        >
-          <thead>
-            <tr>
-              <th>Event Name</th>
-              <th>Location Name</th>
-              <th>Attendees</th>
-              <th>Date</th>
-              <th>Creator</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {datos.items
-              ? datos.items
-                .slice(
-                  datos.pageIndex * datos.pageSize,
-                  datos.pageIndex * datos.pageSize + datos.pageSize
-                )
-                .map((item) => (
-                  <tr key={item._id}>
-                    <td><a className="a-decoration" href={'/event/' + item._id}>{item.eventName}</a></td>
-                    <td>{item.eventLocation}</td>
-                    <td className="attendees">
-                      {item.eventMembers.length} / {item.eventMemberTotal}
-                    </td>
-                    <td>{item.eventDate.substr(0, 16).replace("T", " ")}</td>
-                    <td>
-                      <a
-                        className="a-decoration"
-                        href={"/user/" + item.eventOwner._id}
-                      >
-                        {item.eventOwner.username}
-                      </a>
-                    </td>
-                    <td>
-                      {item.eventMembers.length >= item.eventMemberTotal ? (
-                        <span className="btn-full">Event is full</span>
-                      ) : (
-                        <span className="btn-available" onClick={() => joinevent(item._id)} >Join to event</span>
-                      )}
 
-                    </td>
-                  </tr>
-                ))
-              : null}
-          </tbody>
-        </Table>
+        <div className="table-responsive">
+        <br/>
+        <p align="center">Information about events.</p>
+        <br/>
+        <table className="table table-sm table-bordered">
+          <thead align="center">
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Creator</th>
+                <th>Action</th>
+              </tr>
+          </thead>
+
+          <tbody align="justify">
+              {usuarios && 
+              usuarios.map((usuario)=>(
+              <tr>
+                <td>{usuario.eventName}</td>
+                <td>{usuario.eventLocation}</td>
+                <td>{usuario.eventDate.substr(0, 16).replace("T", " ")}</td>
+                <td>{usuario.eventCategory}</td>
+                <td>{usuario.eventOwner.username}</td>
+                <td>
+                  {usuario.eventMembers.length >= usuario.eventMemberTotal ? (
+                    <span className="btn-full">Event is full</span>
+                  ) : (
+                    <span className="btn-available" onClick={() => joinevent(usuario._id)} >Join to event</span>
+                  )}
+                </td>
+            </tr>
+              ))}
+            </tbody>
+        </table>
+      </div>
         <div className="pageclick">
           <button onClick={(event) => handlePrevPageClick(event)}>
             Prev page

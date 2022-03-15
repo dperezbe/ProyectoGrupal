@@ -250,7 +250,6 @@ body, html {
   padding-right: 25px;
 }
 
-
 .a-decoration{
   text-decoration: none;
 }
@@ -368,4 +367,10 @@ font-size: 15px;
 
 .delete-icon{
   color: red !important;
+}
+
+#searchInput{
+  width: 1000px;
+  display: inline-block;
+
 }

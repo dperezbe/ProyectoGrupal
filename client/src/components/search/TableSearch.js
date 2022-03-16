@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Table } from "reactstrap";
 import axios from "axios";
 import { authContext } from "../../context/authContext";
+import Swal from 'sweetalert2'
 
 const TableSearch = () => {
   const { logged } = useContext(authContext);
@@ -22,15 +23,38 @@ const TableSearch = () => {
     items: [],
   });
 
+  const alertfull = () =>{
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'No hay más cupos para este evento',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   const joinevent = (idevent) => {
     axios
       .put(`api/members/event/${idevent}`, { eventMembers: logged.data._id })
 
       .then((res) => {
-        console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro al evento exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
 
-      .catch((err) => console.log(err));
+      .catch((err) =>
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error al registrarse al evento',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      );
   };
 
   useEffect(() => {
@@ -135,7 +159,7 @@ const TableSearch = () => {
                       </td>
                       <td>
                         {item.eventMembers.length >= item.eventMemberTotal ? (
-                          <span className="btn-full">Event is full</span>
+                          <span className="btn-full" onClick={() => alertfull()}>Event is full</span>
                         ) : (
                           <span
                             className="btn-available"

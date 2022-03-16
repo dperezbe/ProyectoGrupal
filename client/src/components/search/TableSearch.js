@@ -44,6 +44,13 @@ const TableSearch = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        axios
+        .get(`/api/events`)
+        .then((res) => {
+          setDatos({ ...datos, items: res.data });
+        })
+        .catch((err) => console.log(err));
+
       })
 
       .catch((err) =>

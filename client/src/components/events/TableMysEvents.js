@@ -34,7 +34,7 @@ const TableMysEvents = ({ data, iduser, SetMysevents }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className="mys-events">
       <h3>Mis eventos</h3>
       <Table
         bordered

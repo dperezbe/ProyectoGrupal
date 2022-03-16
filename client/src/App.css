@@ -218,7 +218,7 @@ body, html {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-  gap: 50px;
+  gap: 30px;
   text-align: center;
 }
 
@@ -243,6 +243,15 @@ body, html {
   border: solid 1px rgb(206, 206, 206);
   border-radius: 10px;
   text-align: center;
+  width: 60%;
+  padding-top: 6px;
+}
+.search-event-select{
+  border: solid 1px rgb(206, 206, 206);
+  border-radius: 10px;
+  text-align: center;
+  width: 40%;
+  padding-top: 6px;
 }
 
 .search-even-cat{

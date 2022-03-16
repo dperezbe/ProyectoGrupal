@@ -151,8 +151,8 @@ const TableSearch = () => {
 
           <tbody align="justify">
               {usuarios && 
-              usuarios.map((usuario)=>(
-              <tr>
+              usuarios.map((usuario)=>( 
+              <tr key={usuario._id}>
                 <td>{usuario.eventName}</td>
                 <td>{usuario.eventLocation}</td>
                 <td>{usuario.eventDate.substr(0, 16).replace("T", " ")}</td>

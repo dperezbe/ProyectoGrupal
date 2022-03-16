@@ -124,9 +124,9 @@ const CreateEventForm = ({SetMysevents}) => {
           <Label className="labelForm" for="eventName">Nombre del evento</Label>
           <Input name="eventName" onChange={handleForm} />
         </FormGroup>
-        <div class="container-fluid g-0">
-          <div class="row g-0">
-            <div class="col-5">
+        <div className="container-fluid g-0">
+          <div className="row g-0">
+            <div className="col-5">
               <FormGroup>
                 <Label className="labelForm" for="eventName">Categoría</Label>
                 <select className="form-select" name="eventCategory" aria-label="Default select example" onChange={handleForm}>
@@ -140,7 +140,7 @@ const CreateEventForm = ({SetMysevents}) => {
               </FormGroup>
             </div>
             <div className="col-2"></div>
-            <div class="col-5">
+            <div className="col-5">
               <FormGroup>
                 <Label className="labelForm" for="eventLocation">Lugar del evento</Label>
                 <Input name="eventLocation" onChange={handleForm} />
@@ -149,17 +149,17 @@ const CreateEventForm = ({SetMysevents}) => {
           </div>
         </div>
         <div className="container-fluid g-0">
-          <div class="row g-0">
-            <div class="col-5">
+          <div className="row g-0">
+            <div className="col-5">
 
               <FormGroup>
                 <Label className="labelForm" or="eventMemberTotal">Total de jugadores</Label>
                 <Input name="eventMemberTotal" onChange={handleForm} />
               </FormGroup>
             </div>
-            <div class="col-2">
+            <div className="col-2">
             </div>
-            <div class="col-5">
+            <div className="col-5">
               <FormGroup>
                 <Label className="labelForm" for="eventDate">Día del evento</Label>
                 <Input type="datetime-local" name="eventDate" onChange={handleForm} />

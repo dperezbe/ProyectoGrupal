@@ -17,9 +17,9 @@ const MainCreateEvent = () => {
       }, []);
 
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-5">
+        <div className="container">
+            <div className="row">
+                <div className="col-5">
                     <div className="create-event-form">
                         <CreateEventForm SetMysevents ={SetMysevents}/>
                     </div>
@@ -27,14 +27,14 @@ const MainCreateEvent = () => {
                 <div className="col-1">
 
                 </div>
-                <div class="col-5">
+                <div className="col-5">
                    <TableMysEvents
                     data = {mysevents}
                     SetMysevents = {SetMysevents}
                     iduser = {logged.data._id}
                    />
                 </div>
-                <div class="col-1">
+                <div className="col-1">
                    
                 </div>
             </div>

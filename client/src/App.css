@@ -347,13 +347,14 @@ body, html {
 
 #tableProfile{
   width: 1000px;
-  background-color: #D7FFAE;
+  background-color: #ffffff;
   margin-top: 20px;
   margin-left: 50px;
 }
 
 #titleProfile{
-  background-color: #A1D86A;
+  background-color: #4f7cd5d9;
+  color: white;
 }
 
 #field4{
@@ -386,4 +387,18 @@ font-size: 15px;
 
 .mys-events{
   margin-top: 10px;
+}
+
+.comingsoon{
+  background-color: aqua;
+  padding: 3px 7px;
+  border-radius: 100px;
+  margin-left: 20px;
+}
+
+.finalized{
+  background-color: rgb(255, 111, 111);
+  padding: 3px 7px;
+  border-radius: 100px;
+  margin-left: 20px;
 }

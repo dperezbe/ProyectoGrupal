@@ -45,7 +45,7 @@ const TableSearch = () => {
           timer: 1500
         })
         axios
-        .get(`/api/events`)
+        .get(`/api/events/history`)
         .then((res) => {
           setDatos({ ...datos, items: res.data });
         })

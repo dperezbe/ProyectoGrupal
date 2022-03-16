@@ -51,7 +51,7 @@ const TableMysEvents = ({ data, iduser, SetMysevents }) => {
           </tr>
         </thead>
         <tbody>
-          {data?.map((i) => (
+          {data?.filter((t) => t.eventOwner === iduser).map((i) => (
             <tr key={i._id}>
               <td>
                 <a className="a-decoration" href={"/event/" + i._id}>
